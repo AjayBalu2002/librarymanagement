@@ -18,13 +18,18 @@ public class LoginController {
 	@Autowired
 	public LoginService service;
 	
-	@PostMapping("/register")
+	@PostMapping("/registerUser")
 	public ResponseEntity<String> registration(@RequestBody UserInfo user)
 	{
+		
+		
 	return	service.Register( user );
 		
 		
 	}
+	
+	
+	
 	
 	
 	@PostMapping("/login")
@@ -33,7 +38,13 @@ public class LoginController {
 		return service.login(user);
 	}
 	
+   
 	
+	@PostMapping("/adminlogin")
+	public ResponseEntity<String > adminlogin(@RequestBody UserInfo user)
+	{
+		return service.adminlogin(user);
+	}
 
 	
 	
