@@ -41,7 +41,7 @@ public class LoginService {
 	public ResponseEntity<String> login(UserInfo user)
 	{
 		UserInfo tempInfo = repo.findByEmail(user.email);
-		if(tempInfo != null && tempInfo.getPassword().equals(user.getPassword()) )
+		if(tempInfo != null && tempInfo.getPassword().equals(user.getPassword()) && tempInfo.getRole().equals("user") )
 		{
 			return ResponseEntity.ok("login success");	
 		}
@@ -51,6 +51,29 @@ public class LoginService {
 		}
 		
 	}
+	
+
+	
+	
+	public ResponseEntity<String> adminlogin(UserInfo user)
+	{
+		UserInfo tempInfo = repo.findByEmail(user.email);
+		System.out.print(tempInfo.getRole().equals("admin"));
+		if(tempInfo != null && tempInfo.getPassword().equals(user.getPassword()) && tempInfo.getRole().equals("admin") )
+		{
+			return ResponseEntity.ok("admin login success");	
+		}
+		else
+		{
+			return ResponseEntity.badRequest().body("username or of admin is wrong");		
+		}
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 }
