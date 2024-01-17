@@ -53,6 +53,15 @@ public class UserInfo {
 	
 	public String email;
 	
+	public String role;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 	
 	
 }
